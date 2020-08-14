@@ -45,7 +45,6 @@ PREFIX = '{http://www.drugbank.ca}'
 
 mols_w_func_group = []
 all_mols = []
-output = []
 
 print('Please, print your functiounal group.')
 FUNC_GROUP = input()
@@ -108,13 +107,9 @@ for x in years_to_parse:
   mols_w_func_group.append(((df['years'] == x) & (df['func_group'] == 1)).sum())
   all_mols.append((df['years'] == x).sum())
 
-for a,b in zip(mols_w_func_group, all_mols):
-  output.append(a/b)
-
 plt.figure(figsize=(15, 15))
 plt.xlabel('years')
 plt.ylabel(f'per cent with {FUNC_GROUP} in this year')
 plt.title(FUNC_GROUP)
-plt.scatter(years_to_parse, np.array(mols_w_func_group) / 
-np.array(all_mols) , s=50)
+plt.scatter(years_to_parse, np.array(mols_w_func_group) / np.array(all_mols), s=50)
 plt.show()
