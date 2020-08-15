@@ -32,11 +32,11 @@ tree = ET.parse('/content/drive/My Drive/full_database.xml')
 root = tree.getroot()
 
 ALL_FUNC_GROUP = {
-'NH2':  '[NX3;H2,H1;!$(NC=O)]', 
-'C=O':  '[CX3]=[OX1]', 
-'C(O)NH2':  '[NX3][CX3](=[OX1])[#6]', 
-'NO': '[NX2]=[OX1]', 
-'NO2':  '[$([NX3](=O)=O),$([NX3+](=O)[O-])][!#8]'
+  'NH2': '[NX3;H2,H1;!$(NC=O)]', 
+  'C=O': '[CX3]=[OX1]', 
+  'C(O)NH2': '[NX3][CX3](=[OX1])[#6]', 
+  'NO': '[NX2]=[OX1]', 
+  'NO2': '[$([NX3](=O)=O),$([NX3+](=O)[O-])][!#8]'
 }
 
 DICT_OF_MOLS = {'years': [], 'func_group': []}
@@ -78,7 +78,7 @@ for child in tqdm(root.getchildren()):
           
         if child__.tag == (f'{PREFIX}approved') and child__.text is not None:
  
-          DATE_PAT = int((datetime.strptime(child__.text, '%Y-%m-%d')).year)
+          DATE_PAT = (datetime.strptime(child__.text, '%Y-%m-%d')).year
           list_of_dates.append(DATE_PAT)
  
     if len(list_of_dates) != 0:
